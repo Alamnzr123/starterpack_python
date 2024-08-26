@@ -3,7 +3,6 @@ from sqlalchemy.sql import func
 from db import db, metadata, sqlalchemy
 from fastapi import HTTPException
 
-
 books = sqlalchemy.Table(
     "books",
     metadata,

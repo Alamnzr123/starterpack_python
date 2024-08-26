@@ -37,7 +37,8 @@ if config.config_file_name is not None:
 target_metadata = None
 
 # ---------------- added code here -------------------------#
-import models
+import models.authors
+import models.books
 from db import metadata
 #------------------------------------------------------------#
 
