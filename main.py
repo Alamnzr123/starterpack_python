@@ -39,23 +39,23 @@ async def delete_books(id: int):
 @app.post("/authors/")
 async def create_authors(create_author: SchemaAuthors):
     books_id = await ModelAuthors.create(**create_author.model_dump())
-    return {"books_id": books_id}
+    return {"author_id": books_id}
 
 @app.put("/authors/{id}")
 async def update_authors(id: int, create_author: SchemaAuthors):
-    books_id = await ModelAuthors.update_authors(id, **create_author.model_dump(exclude_unset=True))
-    return {"books_id": books_id}
+    author = await ModelAuthors.update_authors(id, **create_author.model_dump(exclude_unset=True))
+    return {"author_id": author}
 
 @app.get("/authors/", response_model=List[SchemaAuthors])
 async def get_authors_All():
-    book = await ModelAuthors.get_all()
-    return book
+    author = await ModelAuthors.get_all()
+    return author
 
 
 @app.get("/authors/{id}", response_model=SchemaAuthors)
 async def get_authors_byId(id: int):
-    book = await ModelAuthors.get_byId(id)
-    return SchemaBooks(**book).dict()
+    author = await ModelAuthors.get_byId(id)
+    return SchemaBooks(**author).dict()
 
 @app.delete("/authors/{id}")
 async def delete_authors(id: int):
